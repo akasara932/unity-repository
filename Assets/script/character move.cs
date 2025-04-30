@@ -6,13 +6,11 @@ public class charactermove : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
     
-    private float moveSpeed = 5.0f;
-    
-    private InputAction moveAction;
+    private InputAction moveaction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        moveaction = playerInput.actions.FindAction("move");
     }
 
     // Update is called once per frame
@@ -22,7 +20,7 @@ public class charactermove : MonoBehaviour
         var vertical = Input.GetAxis("Vertical");
         var direction = new Vector3(horizontal, vertical,0);
         direction=direction.normalized;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        transform.position += direction * character_data.moveSpeed * Time.deltaTime;
         
     }
 }
